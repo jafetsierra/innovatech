@@ -19,10 +19,10 @@ class ProductoSerializer(serializers.ModelSerializer):
         producto = Producto.objects.get(id=obj.id)
         
         return {
-            'name': producto.name,
-            'description': producto.description,
-            'price': producto.price,
-            'category': producto.category,
+            'name'          : producto.name,
+            'description'   : producto.description,
+            'price'         : producto.price,
+            'category'      : producto.category,
             #'thumbanil': producto.thumbanil,
-            'stock': producto.stock,
+            'stock'         : producto.stock,
         }
