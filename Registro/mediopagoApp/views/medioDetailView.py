@@ -12,26 +12,5 @@ class MedioListView(generics.ListAPIView):
     queryset = Medio.objects.all()
     serializer_class = MedioSerializer
     def get_queryset(self):
-        queryset = Medio.objects.filter(userId=self.kwargs['user_id'])
+        queryset = Medio.objects.filter(userId=self.kwargs['pk'])
         return queryset
-
-    '''queryset = Medio.objects.all()
-    serializer_class = MedioSerializer
-    permission_classes = (IsAuthenticated,)
-    
-    
-    def get_queryset(self):
-        token        = self.request.META.get('HTTP_AUTHORIZATION')[7:]
-        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-        valid_data   = tokenBackend.decode(token,verify=False)
-        print("********************\n"*2,queryset,"********************\n"*2)
-        #print("********************\n"*2,valid_data,"\n"*2)
-        #print("\n"*2,self.kwargs,"\n"*2,"*********************")
-        
-        if valid_data['user_id'] != self.kwargs['user_id']:
-            stringResponse = {'detail':'Unauthorized Request'}
-            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
- 
-        queryset = Medio.objects.filter(userId=self.kwargs['user_id'])
-        return queryset
-        '''

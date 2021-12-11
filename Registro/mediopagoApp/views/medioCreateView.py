@@ -14,20 +14,8 @@ class MedioCreateView(generics.CreateAPIView):
     #permission_classes = (IsAuthenticated,)
     
     def post(self,request, *args, **kwargs):
-        '''
-        token        = request.META.get('HTTP_AUTHORIZATION')[7:]
-        tokenBackend = TokenBackend(algorithm=settings.SIMPLE_JWT['ALGORITHM'])
-        valid_data   = tokenBackend.decode(token,verify=False)
-        
-        #print("********************\n"*2,valid_data,"\n"*2)
-        #print("\n"*2,kwargs,"\n"*2,"*********************")
-        
-        if valid_data['user_id'] != kwargs['user_id']:
-            stringResponse = {'detail':'Unauthorized Request'}
-            return Response(stringResponse, status=status.HTTP_401_UNAUTHORIZED)
-        request.data["userId"] = kwargs['user_id']
-        '''
-        request.data["userId"] = kwargs['user_id']
+    
+        request.data["userId"] = kwargs['pk']
         serializer = self.serializer_class(data=request.data)
         
         if serializer.is_valid():

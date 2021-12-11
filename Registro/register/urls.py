@@ -8,9 +8,9 @@ urlpatterns = [
     path('refresh/', TokenRefreshView.as_view()),
     path('verifyToken/', VerifyTokenView.as_view()),
     path('user/', UserCreateView.as_view()),
-    path('user/<int:user_id>/', UserDetailView.as_view()),
-    path('mediopago/create/<int:user_id>/', MedioCreateView.as_view()),
-    path('mediopago/<int:user_id>/', MedioListView.as_view()),
-    path('mediopago/delete/<int:userId>/',MedioDeleteView.as_view()),
-    path('mediopago/update/<int:userId>/', MedioUpdateView.as_view())
+    path('user/<int:pk>/', UserDetailView.as_view()),
+    path('mediopago/create/<int:pk>/', MedioCreateView.as_view()),
+    path('mediopago/<int:pk>/', MedioListView.as_view()),
+    path('mediopago/delete/<int:pk>/',MedioDeleteView.as_view()),
+    path('mediopago/update/<int:pk>/', MedioUpdateView.as_view())
 ]
